@@ -5,7 +5,7 @@ import java.net.Socket;
 public class Cliente {
 	
 	private Socket cliente;
-	private Personaje personaje;
+	//private Personaje personaje;
 	
 	public Cliente(int puerto, String ip) {
 		try {

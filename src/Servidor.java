@@ -16,7 +16,7 @@ public class Servidor {
 			
 			System.out.println("Servidor en Línea...");
 			
-			//acepta 4 usuarios
+			//acepta 4 usuarios (en un futuro)
 			for (int i = 1; i <= 1 ; i++) {
 				Socket cliente = servidor.accept();
 				lista.add(cliente);
