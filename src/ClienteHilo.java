@@ -10,7 +10,7 @@ public class ClienteHilo extends Thread {
 	public ClienteHilo(Socket cliente) {
 		this.cliente = cliente;
 	}
-	
+	//hola
 	
 	public void run() {
 		
