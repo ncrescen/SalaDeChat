@@ -5,7 +5,7 @@ import java.net.Socket;
 public class Cliente {
 	
 	private Socket cliente;
-	private Personaje personaje;
+	//private Personaje personaje;
 	
 	public Cliente(int puerto, String ip) {
 		try {
@@ -16,7 +16,7 @@ public class Cliente {
 			e.printStackTrace();
 		}
 		
-		this.personaje = new Personaje(cliente, 10,10);
+		//this.personaje = new Personaje(cliente, 10,10);
 	}
 	
 	public Socket getCliente() {
@@ -25,14 +25,6 @@ public class Cliente {
 
 	public void setCliente(Socket cliente) {
 		this.cliente = cliente;
-	}
-
-	public Personaje getPersonaje() {
-		return personaje;
-	}
-
-	public void setPersonaje(Personaje personaje) {
-		this.personaje = personaje;
 	}
 
 	private void jugar() throws IOException {
