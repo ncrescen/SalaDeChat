@@ -13,26 +13,49 @@ import javax.swing.Timer;
 
 public class Mapa extends JPanel implements ActionListener{
 
-	private static final long serialVersionUID = 1L;
+	private static final Mapa instanciaMapa = new Mapa();
 	private Timer timerJuego;
-	private static int DELAY_JUEGO = 5;
+	private int TIMER_JUEGO;
 	private Personaje personajeDeUnCliente;
 	
-	public Mapa(ArrayList<Socket> listaClientes){
-		inicializarPersonajes(listaClientes);
-		inicializarComponentes();
+	private Mapa(){
+
 	}
 	
-	private void inicializarPersonajes(ArrayList<Socket> listaClientes) {
-		Socket socket = listaClientes.get(0);
-		personajeDeUnCliente = new Personaje(socket, 10, 10);	
+	public static Mapa getIntance(){
+		return instanciaMapa;
+	}
+	
+	public Timer getTimerJuego() {
+		return timerJuego;
 	}
 
-	private void inicializarComponentes(){
-		addKeyListener(new TAdapter());
-		setFocusable(true);
-		timerJuego = new Timer(DELAY_JUEGO, this);
-        timerJuego.start(); 
+	public void setTimerJuego(Timer timerJuego) {
+		this.timerJuego = timerJuego;
+	}
+
+	public int getTIMER_JUEGO() {
+		return TIMER_JUEGO;
+	}
+
+	public void setTIMER_JUEGO(int tIMER_JUEGO) {
+		TIMER_JUEGO = tIMER_JUEGO;
+	}
+	
+	public Personaje getPersonaje(Personaje personajeJugador) {
+		Personaje personaje = personajeJugador;
+		//esto seria una lista de personajes que recorro hasta que encuentro el buscado
+		if(personaje.getSocketCliente().equals(personajeJugador.getSocketCliente()))
+			personaje = personajeDeUnCliente;
+		return personaje;
+	}
+
+	public void setPersonaje(Personaje personajeDeUnCliente) {
+		this.personajeDeUnCliente = personajeDeUnCliente;
+	}
+
+	public void agregarUsuario(Socket cliente){
+		this.personajeDeUnCliente = new Personaje(cliente, 10, 10);
 	}
 	
 	@Override

@@ -25,21 +25,20 @@ public class ServidorHilo extends Thread {
 			while(escuchando) {
 				System.out.println(texto);
 				
-				/*if(texto.equals("D")){
+				if(texto.equals("D")){
 					DataOutputStream salida = new DataOutputStream(cliente.getOutputStream());
 					salida.writeUTF("Lo recibi y te respondo OK");
 					salida.flush();
-				}*/
+				}
 				//System.out.println(texto);
 				
 				/*for(Socket indice : lista) {
 					if(indice != cliente)
 						new DataOutputStream(indice.getOutputStream()).writeUTF(texto);
 				}*/
-				System.out.println("ESTOY EN EL SERVER: '" + texto + "'");
+				//System.out.println("ESTOY EN EL SERVER: '" + texto + "'");
 				texto = new DataInputStream(cliente.getInputStream()).readUTF();
 			}	
-				//System.out.println("ESTOY CICLANDO");
 			
 			System.out.println("El cliente se ha desconectado estoy en el hilo servidor");
 		} catch (Exception e) {

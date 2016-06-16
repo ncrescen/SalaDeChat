@@ -17,6 +17,10 @@ public class Personaje {
 		this.socketCliente = socket;
 	}
 	
+	public Socket getSocketCliente() {
+		return socketCliente;
+	}
+
 	public int getX() {
 		return x;
 	}
@@ -35,9 +39,7 @@ public class Personaje {
 		int key = e.getKeyCode();
 
 		if (key == KeyEvent.VK_RIGHT) {
-			DataOutputStream salida = new DataOutputStream(this.socketCliente.getOutputStream());
-			salida.writeUTF("D");
-			salida.flush();
+			moverDerecha();
 			/*dx = 1;
 			dy = 0;*/
 		}
@@ -58,6 +60,12 @@ public class Personaje {
 			dy = 1;
 			dx = 0;
 		}
+	}
+
+	private void moverDerecha() throws IOException {
+		DataOutputStream salida = new DataOutputStream(this.socketCliente.getOutputStream());
+		salida.writeUTF("D");
+		salida.flush();
 	}
 
 	public void keyReleased(KeyEvent e) {

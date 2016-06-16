@@ -2,6 +2,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import javax.swing.Timer;
+
 
 public class Servidor {
 	
@@ -24,9 +26,14 @@ public class Servidor {
 				new ServidorHilo(cliente, lista).start();
 			}
 			
-			new Partida(lista);
+			Partida partida = new Partida();
+			Mapa mapa = Mapa.getIntance();
+			partida.cargarMapa(mapa);
+			mapa.setTimerJuego(new Timer(1000,mapa));
+			mapa.agregarUsuario(lista.get(0));
 			
-			//se conectaron los 4 clientes
+			
+			//se conectaron los 4 clientes (ahora solo 1)
 			//partida en juego
 			boolean inGame = true;
 			while(inGame){

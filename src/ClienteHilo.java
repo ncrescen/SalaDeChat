@@ -1,3 +1,4 @@
+import java.io.DataInputStream;
 import java.net.Socket;
 
 
@@ -14,9 +15,8 @@ public class ClienteHilo extends Thread {
 		String texto = "";
 		try {
 			while(true) {
-				//System.out.println("hilo cliente ciclando");
-				//texto = new DataInputStream(cliente.getInputStream()).readUTF();
-				//System.out.println(texto);
+				texto = new DataInputStream(cliente.getInputStream()).readUTF();
+				System.out.println(texto);
 			}
 			
 		} catch (Exception e) {
